@@ -15,14 +15,16 @@ class _LoiginPageState extends State<LoiginPage> {
   final _formkey = GlobalKey<FormState>();
 
   moveToHome(BuildContext context) async {
-    setState(() {
-      changebutton = true;
-    });
-    await Future.delayed(Duration(seconds: 1));
-    await Navigator.pushNamed(context, Myroutes.homeRoute);
-    setState(() {
-      changebutton = false;
-    });
+    // if (_formkey.currentState.validate()) {
+      setState(() {
+        changebutton = true;
+      });
+      await Future.delayed(Duration(seconds: 1));
+      await Navigator.pushNamed(context, Myroutes.homeRoute);
+      setState(() {
+        changebutton = false;
+      });
+      //}
   }
 
   @override
@@ -61,6 +63,12 @@ class _LoiginPageState extends State<LoiginPage> {
                           hintText: "Enter Username",
                           labelText: "Username",
                         ),
+                        // validator: (value) {
+                        //   if (value.isEmpty) {
+                        //     return "username cannot be empty";
+                        //   }
+                        //   return null;
+                        // },
                         onChanged: (value) {
                           name = value;
                           setState(() {});
@@ -72,6 +80,14 @@ class _LoiginPageState extends State<LoiginPage> {
                           hintText: "Enter Password",
                           labelText: "Password",
                         ),
+                        // validator: (value) {
+                        //   if (value.isEmpty) {
+                        //     return " Password cannot be empty";
+                        //   } else if (value.length < 6) {
+                        //     return "Password length Should be Atleast 6";
+                        //   }
+                        //   return null;
+                        // },
                       ),
                       SizedBox(
                         height: 40.0,
